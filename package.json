@@ -1,0 +1,29 @@
+{
+  "name": "whichcolorfunction",
+  "version": "0.0.0",
+  "description": "Determine color function based on color examples",
+  "main": "lib/main.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gyoshev/whichcolorfunction"
+  },
+  "keywords": [
+    "css"
+  ],
+  "author": "Alex Gyoshev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gyoshev/whichcolorfunction/issues"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-browserify": "~3.8.0"
+  },
+  "dependencies": {
+    "less": "~2.5.1"
+  }
+}
