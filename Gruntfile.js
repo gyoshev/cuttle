@@ -8,7 +8,8 @@ module.exports = function(grunt) {
     mochaTest: {
       test: {
         options: {
-          reporter: 'dot'
+          reporter: 'dot',
+          clearRequireCache: true
         },
         src: ['test/**/*.js']
       }
@@ -17,8 +18,17 @@ module.exports = function(grunt) {
       'public/app.js': ['lib/main.js']
     },
     watch: {
-      files: [ "lib/**/*.js"],
-      tasks: [ 'browserify' ]
+      files: [ 'lib/**/*.js', 'test/**/*.js' ],
+      tasks: [ 'default' ]
+    }
+  });
+
+  // run only changed tests when saving test files
+  var defaultTestSrc = grunt.config('mochaTest.test.src');
+  grunt.event.on('watch', function(action, filepath) {
+    grunt.config('mochaTest.test.src', defaultTestSrc);
+    if (filepath.match('test/')) {
+      grunt.config('mochaTest.test.src', filepath);
     }
   });
 
