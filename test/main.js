@@ -5,7 +5,13 @@ describe("whichcolorfunction", function(){
   describe("#suggest()", function(){
     var suggestion;
     function firstFormat(from, to) {
-        return suggest(from, to)[0].format;
+        var suggestions = suggest(from, to);
+
+        if (!suggestions.length) {
+            throw new Error("Nothing suggested!");
+        }
+
+        return suggestions[0].format;
     }
     assert.contains = function(haystack, needle, message) {
         assert(haystack.indexOf(needle) > -1, message ||
@@ -28,6 +34,21 @@ describe("whichcolorfunction", function(){
 
       suggestion = firstFormat("000000", "050505");
       assert.contains(suggestion, "lighten(@input, 2%)");
+    });
+    it("should suggest darken", function() {
+      suggestion = firstFormat("cccccc", "c9c9c9");
+      assert.contains(suggestion, "darken(@input, 1%)");
+
+      suggestion = firstFormat("cccccc", "c4c4c4");
+      assert.contains(suggestion, "darken(@input, 3%)");
+    });
+    it("should suggest desaturate", function() {
+      suggestion = firstFormat("80e619", "80cc33");
+      assert.contains(suggestion, "desaturate(@input, 20%)");
+    });
+    it("should suggest saturate", function() {
+      suggestion = firstFormat("80e619", "80ff00");
+      assert.contains(suggestion, "saturate(@input, 20%)");
     });
   });
 });
