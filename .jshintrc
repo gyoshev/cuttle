@@ -1,0 +1,6 @@
+{
+    "curly": true,
+    "eqnull": true,
+    "eqeqeq": true,
+    "undef": true
+}

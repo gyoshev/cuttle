@@ -29,5 +29,5 @@ describe("whichcolorfunction", function(){
       suggestion = firstFormat("000000", "050505");
       assert.contains(suggestion, "lighten(@input, 2%)");
     });
-  })
-})
+  });
+});
