@@ -1,7 +1,7 @@
 var assert = require("assert");
 var suggest = require("../lib/main").suggest;
 
-describe("whichcolorfunction", function(){
+describe("Cuttle", function(){
   describe("#suggest()", function(){
     var suggestion;
     function firstFormat(from, to) {
