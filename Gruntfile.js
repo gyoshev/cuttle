@@ -28,7 +28,15 @@ module.exports = function(grunt) {
             }
         },
         browserify: {
-            'public/cuttle.min.js': files.lib
+            standalone: {
+                options: {
+                    browserifyOptions: {
+                        standalone: '<%= pkg.name %>'
+                    }
+                },
+                dest: 'public/<%= pkg.name %>.min.js',
+                src: files.lib
+            }
         },
         'gh-pages': {
             options: {
