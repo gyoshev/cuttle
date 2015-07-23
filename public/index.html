@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Cuttle : Color function suggestions based on examples</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <style>
+        output { white-space: pre; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="col-md-12">Dear <strong>Cuttle</strong>, I want to change colors.</h1>
+
+        <div id="from" class="col-md-6">
+            <h2>From</h2>
+            <input value="ffff00">
+        </div>
+        <div id="to" class="col-md-6">
+            <h2>To</h2>
+            <input value="ffffaa">
+        </div>
+
+        <h2 class="col-md-12">What do you suggest?</h2>
+
+        <output id="suggestions" class="col-md-12"></output>
+    </div>
+
+    <script src="cuttle.min.js"></script>
+    <script>
+        function $(selector) { return document.querySelector(selector); }
+
+        function suggest(e) {
+            var from = $("#from input").value;
+            var to = $("#to input").value;
+            var suggestions = cuttle.suggest(from, to);
+
+            $("output").value = suggestions.map(function(x) {
+                return x.format;
+            }).join("\n");
+        }
+
+        document.body.addEventListener("input", suggest);
+
+        suggest();
+    </script>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-10349361-2', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+</body>
+</html>

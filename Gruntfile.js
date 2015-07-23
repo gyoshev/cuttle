@@ -3,6 +3,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-mocha-test');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-gh-pages');
 
     var files = {
         lib: ['lib/**/*.js'],
@@ -27,7 +28,13 @@ module.exports = function(grunt) {
             }
         },
         browserify: {
-            'public/app.js': files.lib
+            'public/cuttle.min.js': files.lib
+        },
+        'gh-pages': {
+            options: {
+                base: 'public'
+            },
+            src: ['**']
         },
         watch: {
             test: {
@@ -54,4 +61,6 @@ module.exports = function(grunt) {
     });
 
     grunt.registerTask('default', [ 'jshint', 'mochaTest', 'browserify' ]);
+
+    grunt.registerTask('publish', [ 'browserify', 'gh-pages' ]);
 };

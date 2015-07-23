@@ -1,2 +1,2 @@
 node_modules
-public/app.js
+public/*.min.js
