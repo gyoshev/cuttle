@@ -36,13 +36,24 @@
         function $(selector) { return document.querySelector(selector); }
 
         function suggest(e) {
+            var result = "Nothing to suggest :(";
             var from = $("#from input").value;
             var to = $("#to input").value;
-            var suggestions = cuttle.suggest(from, to);
+            var suggestions = [];
 
-            $("output").value = suggestions.map(function(x) {
-                return x.format;
-            }).join("\n");
+            if (!from || !to) {
+                result = "I need more colors!";
+            } else {
+                suggestions = cuttle.suggest(from, to);
+            }
+
+            if (suggestions.length) {
+                result = suggestions.map(function(x) {
+                    return x.format;
+                }).join("\n");
+            }
+
+            $("output").value = result;
         }
 
         document.body.addEventListener("input", suggest);
