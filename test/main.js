@@ -50,5 +50,13 @@ describe("Cuttle", function(){
       suggestion = firstFormat("80e619", "80ff00");
       assert.contains(suggestion, "saturate(@input, 20%)");
     });
+    it("should handle hashes", function() {
+      suggestion = firstFormat("#000", "#000");
+      assert.contains(suggestion, "@input");
+    });
+    it("should handle named colors", function() {
+      suggestion = firstFormat("black", "#000");
+      assert.contains(suggestion, "@input");
+    });
   });
 });
