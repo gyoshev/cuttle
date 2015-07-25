@@ -2,5 +2,6 @@
     "curly": true,
     "eqnull": true,
     "eqeqeq": true,
+    "unused": true,
     "undef": true
 }

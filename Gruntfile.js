@@ -7,16 +7,20 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-gh-pages');
 
     var files = {
+        demo: ['demo/**/*.js'],
         lib: ['lib/**/*.js'],
         test: ['test/**/*.js'],
         build: ['Gruntfile.js']
     };
 
-    files.all = [].concat(files.test, files.lib, files.build);
+    files.all = [].concat(files.demo, files.test, files.lib, files.build);
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         jshint: {
+            options: {
+                ignores: "**/*.min.js"
+            },
             all: files.all
         },
         mochaTest: {
