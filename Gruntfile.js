@@ -35,20 +35,29 @@ module.exports = function(grunt) {
                         standalone: '<%= pkg.name %>'
                     }
                 },
-                dest: 'public/<%= pkg.name %>.js',
+                dest: 'dest/<%= pkg.name %>.js',
                 src: files.lib
+            },
+            demo: {
+                dest: 'demo/app.min.js',
+                src: 'demo/app.js'
             }
         },
         uglify: {
-            all: {
+            demo: {
                 files: {
-                    'public/<%= pkg.name %>.min.js': ['public/<%= pkg.name %>.js']
+                    'demo/app.min.js': ['demo/app.min.js']
+                }
+            },
+            dest: {
+                files: {
+                    'dest/<%= pkg.name %>.min.js': ['dest/<%= pkg.name %>.js']
                 }
             }
         },
         'gh-pages': {
             options: {
-                base: 'public'
+                base: 'demo'
             },
             src: ['**']
         },
@@ -76,9 +85,11 @@ module.exports = function(grunt) {
         }
     });
 
+    grunt.registerTask('test', [ 'jshint', 'mochaTest' ]);
+
     grunt.registerTask('package', [ 'browserify', 'uglify' ]);
 
-    grunt.registerTask('default', [ 'jshint', 'mochaTest', 'package' ]);
+    grunt.registerTask('default', [ 'test', 'package' ]);
 
     grunt.registerTask('publish', [ 'package', 'gh-pages' ]);
 };

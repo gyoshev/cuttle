@@ -1,3 +1,4 @@
 node_modules
-public/*.js
+demo/*.min.js
+dest/
 .grunt
