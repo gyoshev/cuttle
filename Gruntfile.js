@@ -3,6 +3,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-mocha-test');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-gh-pages');
 
     var files = {
@@ -34,8 +35,15 @@ module.exports = function(grunt) {
                         standalone: '<%= pkg.name %>'
                     }
                 },
-                dest: 'public/<%= pkg.name %>.min.js',
+                dest: 'public/<%= pkg.name %>.js',
                 src: files.lib
+            }
+        },
+        uglify: {
+            all: {
+                files: {
+                    'public/<%= pkg.name %>.min.js': ['public/<%= pkg.name %>.js']
+                }
             }
         },
         'gh-pages': {
@@ -68,7 +76,9 @@ module.exports = function(grunt) {
         }
     });
 
-    grunt.registerTask('default', [ 'jshint', 'mochaTest', 'browserify' ]);
+    grunt.registerTask('package', [ 'browserify', 'uglify' ]);
 
-    grunt.registerTask('publish', [ 'browserify', 'gh-pages' ]);
+    grunt.registerTask('default', [ 'jshint', 'mochaTest', 'package' ]);
+
+    grunt.registerTask('publish', [ 'package', 'gh-pages' ]);
 };
