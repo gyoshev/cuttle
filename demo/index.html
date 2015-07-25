@@ -8,32 +8,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-    <style>
-        output { white-space: pre; }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1 class="col-md-12">Dear <strong>Cuttle</strong>, I want to change colors.</h1>
+        <h1>Dear <a href="https://github.com/gyoshev/cuttle">Cuttle</a>,</h1>
 
-        <div id="from" class="col-md-6">
-            <h2>From</h2>
-            <input value="ffff00">
-        </div>
-        <div id="to" class="col-md-6">
-            <h2>To</h2>
-            <input value="ffffaa">
-        </div>
+        <p>
+            I want a function that changes colors,<br>
+            <label id="from">from <input value="#ffff00"></label>
+            <label id="to">to <input value="#ffff55"></label>
+        </p>
 
-        <h2 class="col-md-12">What do you suggest?</h2>
+        <p>What do you suggest?</p>
 
-        <output id="suggestions" class="col-md-12"></output>
+        <div id="suggestions"></div>
     </div>
 
     <script src="app.min.js"></script>
-    <script>
-    </script>
 
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -43,7 +35,6 @@
 
       ga('create', 'UA-10349361-2', 'auto');
       ga('send', 'pageview');
-
     </script>
 </body>
 </html>

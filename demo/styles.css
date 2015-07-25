@@ -1,0 +1,17 @@
+body {
+    font-size: 3em;
+}
+
+h1 a {
+    font-weight: bold;
+}
+
+input {
+    font-family: monospace;
+    width: 5em;
+}
+
+#suggestions li {
+    font-family: monospace;
+    font-size: inherit;
+}

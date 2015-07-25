@@ -15,12 +15,12 @@ function suggest(e) {
     }
 
     if (suggestions.length) {
-        result = suggestions.map(function(x) {
-            return x.format;
-        }).join("\n");
+        result = "<ul>" + suggestions.map(function(x) {
+            return "<li>" + x.format + "</li>";
+        }).join("") + "</ul>";
     }
 
-    $("output").value = result;
+    $("#suggestions").innerHTML = result;
 }
 
 document.body.addEventListener("input", suggest);
