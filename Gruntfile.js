@@ -74,7 +74,7 @@ module.exports = function(grunt) {
                 options: {
                     spawn: false
                 },
-                files: files.lib,
+                files: files.demo.concat(files.lib),
                 tasks: [ 'browserify' ]
             }
         }

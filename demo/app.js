@@ -16,7 +16,7 @@ function suggest(e) {
 
     if (suggestions.length) {
         result = "<ul>" + suggestions.map(function(x) {
-            return "<li>" + x.format + "</li>";
+            return "<li><span>" + x.format + "</span> will generate <span title='(difference: " + x.difference + ")'>" + x.color.toCSS() + "</span></li>";
         }).join("") + "</ul>";
     }
 
