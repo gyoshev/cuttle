@@ -58,5 +58,13 @@ describe("Cuttle", function(){
       suggestion = firstFormat("black", "#000");
       assert.contains(suggestion, "@input");
     });
+    it("should suggest spin", function() {
+      suggestion = firstFormat("ff0000", "ff2b00");
+      assert.contains(suggestion, "spin(@input, 10%)");
+    });
+    it("should suggest negative spin", function() {
+      suggestion = firstFormat("00ff00", "2bff00");
+      assert.contains(suggestion, "spin(@input, -10%)");
+    });
   });
 });
