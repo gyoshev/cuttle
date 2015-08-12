@@ -7,22 +7,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Dear <a href="https://github.com/gyoshev/cuttle">Cuttle</a>,</h1>
+        <h1>
+            <img src="images/logo.png" alt="Cuttle" />
+        </h1>
 
-        <p>
-            I want a function that changes colors,<br>
-            <label id="from">from <input value="#ffff00"></label>
-            <label id="to">to <input value="#ffff55"></label>
-        </p>
+        <section id="main">
+            <p>
+                Enter the colors you wish to transform between.<br>
+                Cuttle will suggest suitable functions.
+            </p>
 
-        <p>What do you suggest?</p>
+            <h2 class="ribbon large">Which function are you looking for?</h2>
 
-        <div id="suggestions"></div>
+            <label id="from">
+                <span>from</span>
+                <input placeholder="red" value="#ae465f">
+            </label>
+
+            <label id="to">
+                <span>to</span>
+                <input placeholder="darkred" value="#783042">
+            </label>
+
+            <h2 class="ribbon small">Cuttle suggests&hellip;<h2>
+
+            <div id="suggestions"></div>
+        </section>
     </div>
 
     <script src="app.min.js"></script>
