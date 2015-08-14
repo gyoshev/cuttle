@@ -1,6 +1,22 @@
 var cuttle = require("../lib/main");
 
+(function() {
+
 function $(selector) { return document.querySelector(selector); }
+
+var toArray = function(arrayLike) {
+    return Array.prototype.slice.call(arrayLike);
+}
+
+function inputUpdate(input) {
+    var color = input.value;
+    input.style.color = color;
+    input.style.borderBottomColor = color;
+
+    var paths = input.nextElementSibling.contentDocument.querySelectorAll("[fill='#006884']");
+
+    toArray(paths).forEach(function(path) { path.style.fill = color; });
+}
 
 function suggest(e) {
     var result = "<p>Nothing to suggest</p><i class='cry'></i>";
@@ -10,10 +26,8 @@ function suggest(e) {
     var to = toField.value;
     var suggestions = [];
 
-    fromField.style.color = from;
-    fromField.style.borderBottomColor = from;
-    toField.style.color = to;
-    toField.style.borderBottomColor = to;
+    inputUpdate(fromField);
+    inputUpdate(toField);
 
     if (!from || !to) {
         result = "<p>I need more colors!</p>";
@@ -34,3 +48,5 @@ document.body.addEventListener("input", suggest);
 document.addEventListener("DOMContentLoaded", suggest);
 
 window.cuttle = cuttle;
+
+})();

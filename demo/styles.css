@@ -5,17 +5,37 @@ html, body {
 
 body {
     text-align: center;
+    font-family: Arial, sans-serif;
+    background: #fff url(images/header.png) no-repeat 50% 0;
 }
 
 #main {
+    border-top: 1px solid #e2e2e2;
+    padding-top: 40px;
+    font-size: 26px;
+    line-height: 35px;
     color: #00465f;
     background: #ebedec url(images/background.png) repeat 50% 0;
 }
 
+label {
+    width: 40%;
+    display: inline-block;
+}
+
 label span {
     color: #7c8487;
-    display: block;
     line-height: 38px;
+}
+
+label span,
+label object {
+    display: block;
+    margin: 0 auto;
+}
+
+label object {
+    margin-top: 18px;
 }
 
 input {
@@ -28,6 +48,7 @@ input {
     background-color: #f7f7f7;
     width: 170px;
     height: 50px;
+    font-size: 34px;
     line-height: 50px;
     text-align: center;
 }
@@ -44,6 +65,7 @@ input {
 .ribbon.small {
     background: transparent url(images/ribbon_small.png) no-repeat 50% 0;
     line-height: 57px;
+    font-size: 26px;
 }
 
 #suggestions li {
