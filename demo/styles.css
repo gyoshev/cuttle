@@ -5,8 +5,12 @@ html, body {
 
 body {
     text-align: center;
-    font-family: Arial, sans-serif;
+    font-family: Century, sans-serif;
     background: #fff url(images/header.png) no-repeat 50% 0;
+}
+
+h2 {
+    font-family: Arial, sans-serif;
 }
 
 #main {
@@ -69,6 +73,7 @@ input {
 }
 
 #suggestions li {
+    list-style-type: none;
     font-family: monospace;
     font-size: inherit;
 }

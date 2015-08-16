@@ -37,7 +37,11 @@ function suggest(e) {
 
     if (suggestions.length) {
         result = "<ul>" + suggestions.map(function(x) {
-            return "<li><span class='format'>" + x.format + "</span><i class='arrow-small'></i><span class='result' title='difference: " + x.difference + "'>" + x.color.toCSS() + "</span></li>";
+            return "<li>" +
+                "<span class='format'>" + x.format + "</span>" +
+                "<i class='arrow-small'></i>" +
+                "<span class='result' title='difference: " + x.difference + "'>" + x.color.toCSS() + "</span>" +
+            "</li>";
         }).join("") + "</ul>";
     }
 
@@ -45,7 +49,7 @@ function suggest(e) {
 }
 
 document.body.addEventListener("input", suggest);
-document.addEventListener("DOMContentLoaded", suggest);
+window.addEventListener("load", suggest);
 
 window.cuttle = cuttle;
 
