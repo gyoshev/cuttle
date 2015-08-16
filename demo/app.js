@@ -1,21 +1,46 @@
-var cuttle = require("../lib/main");
-
 (function() {
 
-function $(selector) { return document.querySelector(selector); }
+var cuttle = require("../lib/main");
 
-var toArray = function(arrayLike) {
+function $$(selector, element) {
+    return (element || document).querySelectorAll(selector);
+}
+
+function $(selector, element) {
+    return $$(selector, element)[0];
+}
+
+function toArray(arrayLike) {
     return Array.prototype.slice.call(arrayLike);
+}
+
+function next(tagName, node) {
+    do {
+        node = node.nextSibling;
+    } while (node && node.nodeName.toLowerCase() != tagName);
+
+    return node;
 }
 
 function inputUpdate(input) {
     var color = input.value;
-    input.style.color = color;
-    input.style.borderBottomColor = color;
+    var object = next("object", input);
+    var paths = $$("[fill='#006884']", object.contentDocument);
 
-    var paths = input.nextElementSibling.contentDocument.querySelectorAll("[fill='#006884']");
+    toArray(paths).forEach(function(path) {
+        path.style.fill = color;
+    });
+}
 
-    toArray(paths).forEach(function(path) { path.style.fill = color; });
+function formatSuggestion(s) {
+    var color = s.color.toCSS();
+    return "<tr>" +
+        "<td class='format'>" + s.format + "</td>" +
+        "<td><i class='arrow-small'></i></td>" +
+        "<td class='result' style='color: " + color + "'>" +
+            color +
+        "</td>" +
+    "</tr>";
 }
 
 function suggest(e) {
@@ -36,21 +61,74 @@ function suggest(e) {
     }
 
     if (suggestions.length) {
-        result = "<ul>" + suggestions.map(function(x) {
-            return "<li>" +
-                "<span class='format'>" + x.format + "</span>" +
-                "<i class='arrow-small'></i>" +
-                "<span class='result' title='difference: " + x.difference + "'>" + x.color.toCSS() + "</span>" +
-            "</li>";
-        }).join("") + "</ul>";
+        result = [].concat([
+            "<table>",
+            "<colgroup><col><col><col></colgroup>"
+        ], suggestions.map(formatSuggestion), [
+            "</table>"
+        ]).join("");
     }
 
-    $("#suggestions").innerHTML = result;
+    $(".suggestions").innerHTML = result;
+
 }
 
+// scroll to section once, to show results
+
+function scrollable(elements) {
+    return toArray(elements).filter(function(element) {
+        return element.clientHeight < element.offsetHeight;
+    })[0];
+}
+
+function scrollToSection(e) {
+    if (e.target.nodeName.toLowerCase() != "input") {
+        return;
+    }
+
+    scrollTo(scrollable($$("html,body")), $("section").offsetTop, 500);
+
+    unbind();
+}
+
+function unbind() {
+    document.body.removeEventListener("focus", scrollToSection, true);
+}
+
+document.body.addEventListener("focus", scrollToSection, true);
 document.body.addEventListener("input", suggest);
 window.addEventListener("load", suggest);
 
 window.cuttle = cuttle;
+
+// scrollTo + easing, http://stackoverflow.com/a/16136789/25427
+function scrollTo(element, to, duration) {
+    var start = element.scrollTop;
+    var change = to - start;
+    var time = 0;
+    var increment = 20;
+
+    function animateScroll() {
+        time += increment;
+        var val = Math.easeInOutQuad(time, start, change, duration);
+        element.scrollTop = val;
+        if (time < duration) {
+            setTimeout(animateScroll, increment);
+        }
+    }
+
+    animateScroll();
+}
+
+//t = current time
+//b = start value
+//c = change in value
+//d = duration
+Math.easeInOutQuad = function (t, b, c, d) {
+    t /= d/2;
+    if (t < 1) return c/2*t*t + b;
+    t--;
+    return -c/2 * (t*(t-2) - 1) + b;
+};
 
 })();

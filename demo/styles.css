@@ -1,4 +1,4 @@
-html, body {
+html, body, h1 {
     margin: 0;
     padding: 0;
 }
@@ -6,24 +6,36 @@ html, body {
 body {
     text-align: center;
     font-family: Century, sans-serif;
+}
+
+header {
     background: #fff url(images/header.png) no-repeat 50% 0;
+    padding: 30px 0 10px;
 }
 
 h2 {
     font-family: Arial, sans-serif;
 }
 
-#main {
-    border-top: 1px solid #e2e2e2;
-    padding-top: 40px;
+i {
+    display: inline-block;
+}
+
+section {
     font-size: 26px;
     line-height: 35px;
     color: #00465f;
     background: #ebedec url(images/background.png) repeat 50% 0;
+    border-top: 1px solid #e2e2e2;
+    padding: 40px 0;
+}
+
+section p {
+    padding: 1em 0;
 }
 
 label {
-    width: 40%;
+    width: 30%;
     display: inline-block;
 }
 
@@ -67,13 +79,49 @@ input {
 }
 
 .ribbon.small {
-    background: transparent url(images/ribbon_small.png) no-repeat 50% 0;
+    background: transparent url(images/ribbon-small.png) no-repeat 50% 0;
     line-height: 57px;
     font-size: 26px;
 }
 
-#suggestions li {
-    list-style-type: none;
-    font-family: monospace;
-    font-size: inherit;
+.arrow {
+    background-image: url(images/arrow.png);
+    width: 80px;
+    height: 37px;
+
+    position: relative;
+    top: 140px;
+}
+
+.arrow-small {
+    background-image: url(images/arrow-small.png);
+    width: 51px;
+    height: 23px;
+
+    margin: 0 1em;
+}
+
+.suggestions table {
+    text-align: left;
+    margin: 0 auto;
+    table-layout: fixed;
+    line-height: 50px;
+}
+
+.suggestions .format {
+    color: #ae465f;
+    padding-right: 80px;
+}
+
+.suggestions .result {
+    padding-left: 80px;
+}
+
+footer a {
+    color: inherit;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
 }
