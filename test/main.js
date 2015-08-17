@@ -66,5 +66,9 @@ describe("Cuttle", function(){
       suggestion = firstFormat("00ff00", "2bff00");
       assert.contains(suggestion, "spin(@input, -10%)");
     });
+    it("should suggest greyscale", function() {
+      suggestion = firstFormat("80f20d", "808080");
+      assert.contains(suggestion, "greyscale(@input)");
+    });
   });
 });
