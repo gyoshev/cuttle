@@ -70,5 +70,9 @@ describe("Cuttle", function(){
       suggestion = firstFormat("80f20d", "808080");
       assert.contains(suggestion, "greyscale(@input)");
     });
+    it("should suggest hsl transform", function() {
+      suggestion = firstFormat("80f20d", "f820d0");
+      assert.contains(suggestion, "hsl(hue(@input * ), saturation(@input * ), lightness(@input) * )");
+    });
   });
 });
