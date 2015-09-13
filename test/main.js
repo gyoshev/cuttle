@@ -83,11 +83,11 @@ describe("Cuttle", function(){
     });
     it("should suggest spin", function() {
       suggestion = firstFormat("ff0000", "ff2b00");
-      assert.contains(suggestion, "spin(@input, 10%)");
+      assert.contains(suggestion, "spin(@input, 10)");
     });
     it("should suggest negative spin", function() {
       suggestion = firstFormat("00ff00", "2bff00");
-      assert.contains(suggestion, "spin(@input, -10%)");
+      assert.contains(suggestion, "spin(@input, -10)");
     });
     it("should suggest greyscale", function() {
       suggestion = firstFormat("80f20d", "808080");
