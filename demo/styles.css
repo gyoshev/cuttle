@@ -79,6 +79,7 @@ input {
 }
 
 .ribbon.small {
+    margin-top: 0;
     background: transparent url(images/ribbon-small.png) no-repeat 50% 0;
     line-height: 57px;
     font-size: 26px;
@@ -115,6 +116,23 @@ input {
 
 .suggestions .result {
     padding-left: 80px;
+}
+
+footer {
+    border-top: 1px solid #e2e2e2;
+    background-repeat: no-repeat;
+    background-image: url("images/footer.png");
+    background-position: 45% 0;
+    height: 168px;
+    color: #5d5d5d;
+    font-family: Arial, Verdana, sans-serif;
+}
+
+footer p {
+    text-align: left;
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 footer a {
