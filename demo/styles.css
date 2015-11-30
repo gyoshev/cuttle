@@ -18,11 +18,11 @@ h2 {
 }
 
 i {
-    display: inline-block;
+    display: none;
 }
 
 section {
-    font-size: 26px;
+    font-size: 20px;
     line-height: 35px;
     color: #00465f;
     background: #ebedec url(images/background.png) repeat 50% 0;
@@ -35,8 +35,7 @@ section p {
 }
 
 label {
-    width: 30%;
-    display: inline-block;
+    display: block;
 }
 
 label span {
@@ -44,14 +43,14 @@ label span {
     line-height: 38px;
 }
 
-label span,
-label object {
+label span {
     display: block;
     margin: 0 auto;
 }
 
 label object {
-    margin-top: 18px;
+    display: none;
+    margin: 18px auto 0;
 }
 
 input {
@@ -64,23 +63,22 @@ input {
     background-color: #f7f7f7;
     width: 170px;
     height: 50px;
-    font-size: 34px;
-    line-height: 50px;
+    font-size: 1.4em;
+    line-height: 1.5em;
     text-align: center;
 }
 
 .ribbon {
+    background-color: #ad465f;
     color: #fff;
 }
 
 .ribbon.large {
-    background: transparent url(images/ribbon.png) no-repeat 50% 0;
     line-height: 76px;
 }
 
 .ribbon.small {
     margin-top: 0;
-    background: transparent url(images/ribbon-small.png) no-repeat 50% 0;
     line-height: 57px;
     font-size: 26px;
 }
@@ -111,11 +109,10 @@ input {
 
 .suggestions .format {
     color: #ae465f;
-    padding-right: 80px;
 }
 
-.suggestions .result {
-    padding-left: 80px;
+.suggestions .format:after {
+    content: " \00BB ";
 }
 
 footer {
@@ -147,4 +144,43 @@ footer a {
 
 footer a:hover {
     text-decoration: underline;
+}
+
+@media screen and (min-width: 920px) {
+    section {
+        font-size: 26px;
+    }
+
+    i {
+        display: inline-block;
+    }
+
+    label {
+        width: 30%;
+        display: inline-block;
+    }
+
+    label object {
+        display: block;
+    }
+
+    .ribbon.large {
+        background: transparent url(images/ribbon.png) no-repeat 50% 0;
+    }
+
+    .ribbon.small {
+        background: transparent url(images/ribbon-small.png) no-repeat 50% 0;
+    }
+
+    .suggestions .format {
+        padding-right: 80px;
+    }
+
+    .suggestions .format:after {
+        content: none;
+    }
+
+    .suggestions .result {
+        padding-left: 80px;
+    }
 }
