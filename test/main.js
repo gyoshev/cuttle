@@ -77,10 +77,6 @@ describe("Cuttle", function(){
       suggestion = firstFormat("#000", "#000");
       assert.contains(suggestion, "@input");
     });
-    it("should handle named colors", function() {
-      suggestion = firstFormat("black", "#000");
-      assert.contains(suggestion, "@input");
-    });
     it("should suggest spin", function() {
       suggestion = firstFormat("ff0000", "ff2b00");
       assert.contains(suggestion, "spin(@input, 10)");
