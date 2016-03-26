@@ -5,6 +5,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-gh-pages');
+    grunt.loadNpmTasks('grunt-serve');
 
     var files = {
         demo: ['demo/**/*.js'],
@@ -64,6 +65,14 @@ module.exports = function(grunt) {
                 base: 'demo'
             },
             src: ['**']
+        },
+        serve: {
+            options: {
+                port: 9000,
+                serve: {
+                    path: './demo/'
+                }
+            }
         },
         watch: {
             test: {
