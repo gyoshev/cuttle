@@ -40,7 +40,12 @@ fieldset {
 }
 
 legend {
+    text-align: center;
     color: #7c8487;
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
 }
 
 .radio {
