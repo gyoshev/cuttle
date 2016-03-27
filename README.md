@@ -8,7 +8,7 @@ Cuttle suggests color transition functions based on provided examples.
 
 Suggests color functions that map from the `from` color to the `to` color.
 
-Accepts an optional `preprocessor` parameter for the target preprocessor. Valid values are `"less"` and `"sass"`. The default is "less".
+Accepts an optional `preprocessor` parameter for the target preprocessor. Valid values are `"less"` and `"sass"`. The default is `"less"`.
 
 Returns an array of suggestions, sorted by difference from the target color.
 
