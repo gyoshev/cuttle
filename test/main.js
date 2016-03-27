@@ -33,6 +33,10 @@ describe("Cuttle", function(){
         assert(haystack.indexOf(needle) > -1, message ||
                (haystack + " does not contain " + needle));
     };
+    assert.containsNot = function(haystack, needle, message) {
+        assert(haystack.indexOf(needle) == -1, message ||
+               (haystack + " contains " + needle));
+    };
     assert.lt = function(a, b, message) {
         assert(a < b, message || (a + " is not less than " + b));
     };
@@ -145,6 +149,14 @@ describe("Cuttle", function(){
     it("should suggest sass grayscale", function() {
       suggestion = firstFormat("80f20d", "808080", "sass");
       assert.contains(suggestion, "grayscale($input)");
+    });
+    it("should suggest sass adjust-hue", function() {
+      suggestion = firstFormat("ff0000", "ff2b00", "sass");
+      assert.contains(suggestion, "adjust-hue($input, 10)");
+    });
+    it("should not suggest sass overlay", function() {
+      suggestion = allFormats("ff6600", "ffa300", "sass");
+      assert.containsNot(suggestion, "overlay(@input, #cccccc)");
     });
   });
 });
