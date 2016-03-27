@@ -135,5 +135,16 @@ describe("Cuttle", function(){
       suggestion = firstFormat("000", "000", "sass");
       assert.contains(suggestion, "$input");
     });
+    it("should suggest sass lighten", function() {
+      suggestion = allFormats("000000", "030303", "sass");
+      assert.contains(suggestion, "lighten($input, 1%)");
+
+      suggestion = allFormats("000000", "050505", "sass");
+      assert.contains(suggestion, "lighten($input, 2%)");
+    });
+    it("should suggest sass grayscale", function() {
+      suggestion = firstFormat("80f20d", "808080", "sass");
+      assert.contains(suggestion, "grayscale($input)");
+    });
   });
 });
