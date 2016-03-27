@@ -22,16 +22,30 @@
             Cuttle will suggest suitable functions.
         </p>
 
-        <label id="from">
-            <span>input</span>
+        <fieldset>
+            <legend>Preprocessor</legend>
+
+            <label class="radio">
+                <input type="radio" name="preprocessor" value="less" checked />
+                <span>LESS</span>
+            </label><!--
+
+            --><label class="radio">
+                <input type="radio" name="preprocessor" value="sass" />
+                <span>SASS</span>
+            </label>
+        </fieldset>
+
+        <label id="from" class="color">
+            <span>Input</span>
             <input placeholder="red" value="#ae465f">
             <object tabindex="-1" type="image/svg+xml" data="images/cuttlefish.svg"></object>
         </label>
 
         <i class="arrow"></i>
 
-        <label id="to">
-            <span>output</span>
+        <label id="to" class="color">
+            <span>Output</span>
             <input placeholder="darkred" value="#aeae46">
             <object tabindex="-1" type="image/svg+xml" data="images/cuttlefish.svg"></object>
         </label>

@@ -1,4 +1,4 @@
-html, body, h1 {
+html, body, h1, fieldset {
     margin: 0;
     padding: 0;
 }
@@ -34,26 +34,67 @@ section p {
     padding: 1em 0;
 }
 
-label {
+fieldset {
+    border: 0;
+    padding: 1em 0 2em;
+}
+
+legend {
+    color: #7c8487;
+}
+
+.radio {
+    display: inline-block;
+}
+
+.radio input {
+    visibility: hidden;
+    position: absolute;
+}
+
+.radio span {
+    padding: .25em .5em;
+    border-width: 1px;
+    border-style: solid;
+    background-color: #f7f7f7;
+    cursor: pointer;
+}
+
+.radio:first-of-type span {
+    border-radius: .2em 0 0 .2em;
+    border-right: none;
+}
+
+.radio:last-of-type span {
+    border-radius: 0 .2em .2em 0;
+    border-left: none;
+}
+
+.radio input:checked + span {
+    border-color: #ad465f;
+    background-color: #ad465f;
+    color: #fff;
+    cursor: default;
+    box-shadow: inset 0 0 5px rgba(0,0,0,.5);
+}
+
+.color {
     display: block;
 }
 
-label span {
+.color span {
     color: #7c8487;
     line-height: 38px;
-}
-
-label span {
     display: block;
     margin: 0 auto;
 }
 
-label object {
+.color object {
     display: none;
     margin: 18px auto 0;
 }
 
-input {
+.color input {
     font-family: monospace;
     width: 5em;
     border-style: solid;
@@ -155,12 +196,12 @@ footer a:hover {
         display: inline-block;
     }
 
-    label {
+    .color {
         width: 30%;
         display: inline-block;
     }
 
-    label object {
+    .color object {
         display: block;
     }
 

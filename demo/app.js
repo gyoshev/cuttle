@@ -43,6 +43,14 @@ function formatSuggestion(s) {
     "</tr>";
 }
 
+function checkedValue(nodes) {
+    return Array.prototype.slice.apply(nodes)
+        .map(function(x) {
+            return x.checked ? x.value : undefined;
+        })
+        .filter(Boolean)[0];
+}
+
 function suggest(e) {
     var result = "<p>Nothing to suggest</p><i class='cry'></i>";
     var fromField = $("#from input");
@@ -50,6 +58,7 @@ function suggest(e) {
     var toField = $("#to input");
     var to = toField.value;
     var suggestions = [];
+    var preprocessor = checkedValue($$("[name=preprocessor]"));
 
     inputUpdate(fromField);
     inputUpdate(toField);
@@ -57,7 +66,7 @@ function suggest(e) {
     if (!from || !to) {
         result = "<p>I need more colors!</p>";
     } else {
-        suggestions = cuttle.suggest(from, to);
+        suggestions = cuttle.suggest(from, to, preprocessor);
     }
 
     if (suggestions.length) {
@@ -97,6 +106,7 @@ function unbind() {
 
 document.body.addEventListener("focus", scrollToSection, true);
 document.body.addEventListener("input", suggest);
+$("fieldset").addEventListener("change", suggest);
 window.addEventListener("load", suggest);
 
 window.cuttle = cuttle;
