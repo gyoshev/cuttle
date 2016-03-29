@@ -51,6 +51,10 @@ function checkedValue(nodes) {
         .filter(Boolean)[0];
 }
 
+function isBlending(suggestion) {
+    return (/^blend-/i).test(suggestion.format);
+}
+
 function suggest(e) {
     var result = "<p>Nothing to suggest</p><i class='cry'></i>";
     var fromField = $("#from input");
@@ -76,6 +80,10 @@ function suggest(e) {
         ], suggestions.map(formatSuggestion), [
             "</table>"
         ]).join("");
+    }
+
+    if (preprocessor == "sass" && suggestions.some(isBlending)) {
+        result += "<p>Note: For blend-* formats, use <a href='https://github.com/heygrady/scss-blend-modes'>scss-blend-modes</a>.</p>";
     }
 
     $(".suggestions").innerHTML = result;
