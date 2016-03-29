@@ -154,9 +154,13 @@ describe("Cuttle", function(){
       suggestion = firstFormat("ff0000", "ff2b00", "sass");
       assert.contains(suggestion, "adjust-hue($input, 10)");
     });
-    it("should not suggest sass overlay", function() {
+    it("should suggest sass overlay", function() {
       suggestion = allFormats("ff6600", "ffa300", "sass");
-      assert.containsNot(suggestion, "overlay(@input, #cccccc)");
+      assert.containsNot(suggestion, "blend-overlay($input, #cccccc)");
+    });
+    it("should suggest absolute diff", function() {
+      suggestion = allFormats("bada55", "b0bca7", "sass");
+      assert.contains(suggestion, "lighten(desaturate(adjust-hue($input, 19.8496), 50.7028), 10.1961)");
     });
   });
 });
