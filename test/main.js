@@ -74,7 +74,7 @@ describe("Cuttle", function(){
       assert.contains(suggestion, "desaturate(@input, 20%)");
     });
     it("should suggest saturate", function() {
-      suggestion = firstFormat("80e619", "80ff00");
+      suggestion = allFormats("80e619", "80ff00");
       assert.contains(suggestion, "saturate(@input, 20%)");
     });
     it("should handle hashes", function() {
@@ -90,7 +90,7 @@ describe("Cuttle", function(){
       assert.contains(suggestion, "spin(@input, -10)");
     });
     it("should suggest greyscale", function() {
-      suggestion = firstFormat("80f20d", "808080");
+      suggestion = allFormats("80f20d", "808080");
       assert.contains(suggestion, "greyscale(@input)");
     });
     it("should suggest multiply", function() {
@@ -135,6 +135,10 @@ describe("Cuttle", function(){
       suggestion = allFormats("ff6600", "668599");
       assert.contains(suggestion, "exclusion(@input, #999999)");
     });
+    it("should suggest absolute diff", function() {
+      suggestion = allFormats("bada55", "b0bca7");
+      assert.contains(suggestion, "lighten(desaturate(spin(@input, 19.8496), 50.7028), 10.1961)");
+    });
     it("should suggest sass identity", function() {
       suggestion = firstFormat("000", "000", "sass");
       assert.contains(suggestion, "$input");
@@ -147,7 +151,7 @@ describe("Cuttle", function(){
       assert.contains(suggestion, "lighten($input, 2%)");
     });
     it("should suggest sass grayscale", function() {
-      suggestion = firstFormat("80f20d", "808080", "sass");
+      suggestion = allFormats("80f20d", "808080", "sass");
       assert.contains(suggestion, "grayscale($input)");
     });
     it("should suggest sass adjust-hue", function() {
@@ -156,9 +160,9 @@ describe("Cuttle", function(){
     });
     it("should suggest sass overlay", function() {
       suggestion = allFormats("ff6600", "ffa300", "sass");
-      assert.containsNot(suggestion, "blend-overlay($input, #cccccc)");
+      assert.contains(suggestion, "blend-overlay($input, #cccccc)");
     });
-    it("should suggest absolute diff", function() {
+    it("should suggest sass absolute diff", function() {
       suggestion = allFormats("bada55", "b0bca7", "sass");
       assert.contains(suggestion, "lighten(desaturate(adjust-hue($input, 19.8496), 50.7028), 10.1961)");
     });
