@@ -1,6 +1,12 @@
 # Cuttle
 
-Cuttle suggests color transition functions based on provided examples.
+Ever wondered what color transformation to use to get from one color to another?
+
+Say, `#ae465f` to `#aeae46`?
+
+[Cuttle](http://ofcodeandcolor.com/cuttle/) got you covered.
+
+Because that's what cephalopods do for one another.
 
 ## API Reference
 
