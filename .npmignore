@@ -1,2 +1,7 @@
 demo/
 test/
+.grunt
+CNAME
+.jshintrc
+.editorconfig
+Gruntfile.js
