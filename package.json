@@ -1,6 +1,6 @@
 {
   "name": "cuttle",
-  "version": "0.0.0",
+  "version": "0.8.0",
   "description": "Determine color function based on color examples",
   "main": "lib/main.js",
   "bin": {
