@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "description": "Determine color function based on color examples",
   "main": "lib/main.js",
+  "bin": {
+    "cuttle": "bin/cuttle.js"
+  },
   "scripts": {
     "test": "grunt test"
   },
@@ -30,7 +33,8 @@
     "mocha": "~2.2.5"
   },
   "dependencies": {
-    "less": "~2.5.1",
-    "chroma-js": "~1.0.1"
+    "chroma-js": "~1.0.1",
+    "commander": "^2.9.0",
+    "less": "~2.5.1"
   }
 }
