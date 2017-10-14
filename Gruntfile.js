@@ -62,7 +62,8 @@ module.exports = function(grunt) {
         },
         'gh-pages': {
             options: {
-                base: 'demo'
+                base: 'demo',
+                branch: 'site-production'
             },
             src: ['**']
         },
