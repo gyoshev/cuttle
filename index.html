@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Cuttle : Color function suggestions based on examples</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1><img src="images/logo.png" alt="Cuttle" /></h1>
+    </header>
+
+    <section>
+        <h2 class="ribbon large">Which function are you looking for?</h2>
+
+        <p>
+            Enter the colors you wish to transform between.<br>
+            Cuttle will suggest suitable functions.
+        </p>
+
+        <fieldset>
+            <legend>Preprocessor</legend>
+
+            <label class="radio">
+                <input type="radio" name="preprocessor" value="less" checked />
+                <span>LESS</span>
+            </label><!--
+
+            --><label class="radio">
+                <input type="radio" name="preprocessor" value="sass" />
+                <span>SASS</span>
+            </label>
+        </fieldset>
+
+        <label id="from" class="color">
+            <span>Input</span>
+            <input placeholder="red" value="#ae465f">
+            <object tabindex="-1" type="image/svg+xml" data="images/cuttlefish.svg"></object>
+        </label>
+
+        <i class="arrow"></i>
+
+        <label id="to" class="color">
+            <span>Output</span>
+            <input placeholder="darkred" value="#aeae46">
+            <object tabindex="-1" type="image/svg+xml" data="images/cuttlefish.svg"></object>
+        </label>
+    </section>
+
+    <section>
+        <h2 class="ribbon small">Cuttle suggests&hellip;</h2>
+
+        <div class="suggestions"></div>
+    </section>
+
+    <footer>
+        <p>code by <a href="http://gyoshev.net/">Alex Gyoshev</a></p>
+        <p>design by Miglena Gyosheva</p>
+        <p>source on <a href="http://github.com/gyoshev/cuttle">GitHub</a></p>
+    </footer>
+
+    <script src="app.min.js"></script>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-10349361-2', 'auto');
+      ga('send', 'pageview');
+    </script>
+</body>
+</html>
